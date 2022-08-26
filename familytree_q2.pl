@@ -35,7 +35,7 @@ tio(X,Y) :- gerou(Z,Y), irmão(X,Z).
 tia(X,Y) :- gerou(Z,Y), irma(X,Z).
 
 primo(X,Y) :- tio(Z,Y), filho(X,Z).
-prima(X,Y) :- tio(Z,Y), filho(X,Z).
+prima(X,Y) :- tio(Z,Y), filha(X,Z).
 
 avô(X,Y) :- gerou(Z,Y), pai(X,Z).
 avó(X,Y) :- gerou(Z,Y), mae(X,Z).
