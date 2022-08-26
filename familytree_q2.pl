@@ -39,3 +39,7 @@ prima(X,Y) :- tio(Z,Y), filha(X,Z).
 
 avô(X,Y) :- gerou(Z,Y), pai(X,Z).
 avó(X,Y) :- gerou(Z,Y), mae(X,Z).
+
+feliz(X) :- gerou(X,Y).
+casal(X,Y) :- gerou(X,Z), gerou(Y,Z).
+
