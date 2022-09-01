@@ -145,5 +145,8 @@ mulher_alta_Leve(Nome):- pessoa(Nome,_,_,Altura,Peso), Altura >= 1.70, Peso < 65
 casal_masc_alto(NomeM, NomeF):- pessoa(NomeM,SexoM,_,AlturaM,_), sexo(SexoM, SexoCheck), SexoCheck =:= 1,
     pessoa(NomeF,SexoF,_,AlturaF,_), sexo(SexoF, SexoCheck2), SexoCheck2 =:= 0, AlturaM > AlturaF. 
 
+mulher_modelo(Nome):- pessoa(Nome,Sexo,Idade,Altura,Peso), sexo(Sexo, SexoCheck), SexoCheck =:= 0,
+    Altura > 1.70, Idade < 25, Peso =< 62.1*Altura-44.7.
+
 
 
