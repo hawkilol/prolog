@@ -8,7 +8,6 @@ pais(india, 3, 450).
 dens(P,D):- pais(P,A,POP), D is POP/A . %P == nome do pais, D == densidade
 %a): dens(NomePais, Densidade).
 %b): dens(india, DensidadeIndia), dens(china, DensidadeChina), DensidadeIndia > DensidadeChina. dens(india, DensidadeIndia), dens(china, DensidadeChina), DensidadeIndia > DensidadeChina. pais(india, _, PopulacaoIndia), pais(china, _, PopulacaoChina), PopulacaoIndia > PopulacaoChina.
-%c): func(CodigoFunc, NomeFunc, Salario), dep(CodigoFunc, NomeDep), Salario > 1700.00.
 
 %prog 2.2
 %func(Codigo, nome, salario).
@@ -18,6 +17,7 @@ func(3, ivo, 903.50).
 
 %a): func(CodigoFunc, NomeFunc, Salario), Salario >= 1500.00, Salario =<3000.00.
 %b): func(CodigoFunc, NomeFunc, Salario), \+(dep(CodigoFunc, _)), Salario < 1200.00.
+%c): func(CodigoFunc, NomeFunc, Salario), dep(CodigoFunc, NomeDep), Salario > 1700.00.
 
 %dep(Codigo, Nome)
 dep(1, ary).
