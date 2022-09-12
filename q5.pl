@@ -15,10 +15,20 @@ fat(N,F):-
 	fat(M,R),
 	F is N*R.
 
+%4.1
 pro2(_,0,0).
 pro2(X,Y,Z):-
 	Y>0,
 	M is Y-1,
 	pro2(X,M,R),
 	Z is X+R.
+%4.2
+decToBin(0,1).
+decToBin(X,Y):-
+	X>0,
+	M is X-1,
+	decToBin(M,R),
+	Y is mod(M,R).
+
+
 
