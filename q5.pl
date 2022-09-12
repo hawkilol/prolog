@@ -23,6 +23,7 @@ pro2(X,Y,Z):-
 	pro2(X,M,R),
 	Z is X+R.
 %4.2
+%incompleto
 decToBin(0,1).
 decToBin(X,Y):-
 	X>0,
