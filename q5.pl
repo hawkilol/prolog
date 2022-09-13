@@ -32,4 +32,50 @@ decToBin(X,Y):-
 	Y is mod(M,R).
 
 
+%v2
+
+fat(0,1).
+fat(N,F):-
+	N>0,
+	M is N-1,
+	fat(M,R),
+	F is N*R.
+
+%4.1
+pro2(_,0,0).
+pro2(X,Y,Z):-
+	Y>0,
+	M is Y-1,
+	pro2(X,M,R),
+	Z is X+R,
+	write(Z).
+%4.2
+%incompleto
+decToBin(0,0).
+decToBin(1,1).
+decToBin(X,Y):-
+	X>1,
+	M is X // 2,
+	decToBin(M,R),
+    
+	R is M mod 2,
+	write(R).
+
+dToBin(0,0).
+dToBin(1,1).
+dToBin(N,F):-
+	N>1,
+    M is N // 2,
+	dToBin(M,R),
+	F is R mod 2,
+    write(F).
+
+dec2bin([0],0).
+dec2bin([1],1).
+dec2bin(N,L):- 
+    N > 1,
+    X is N mod 2,
+    Y is N // 2,  
+    dec2bin(Y,L1),
+    L = [L1|X].
 
