@@ -33,6 +33,7 @@ decToBin(X,Y):-
 
 
 %v2
+
 fat(0,1).
 fat(N,F):-
 	N>0,
@@ -93,6 +94,4 @@ acima(X,Y,D):- estrada(X,Y,D).
 %acima(X,Y,D):- estrada(X,Z,D), (acima(Z,Y,D);acima(Z,Y,_)), estrada(Z,Y,D1), Q is D + D1, write(Q).
 acima(X,Y,D):- estrada(X,Z,D), acima(Z,Y,_).
 
-dist(A,B,D):- acima(A,Z,D1), acima(Z,B,D2), D is D1 + D2; acima(A,B,D).
-
-
+dist(A,B,D):- acima(A,Z,D1), acima(Z,B,D2), D is D1 + D2,!; acima(A,B,D).
