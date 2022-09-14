@@ -33,7 +33,6 @@ decToBin(X,Y):-
 
 
 %v2
-
 fat(0,1).
 fat(N,F):-
 	N>0,
@@ -51,15 +50,14 @@ pro2(X,Y,Z):-
 	write(Z).
 %4.2
 %incompleto
-decToBin(0,0).
-decToBin(1,1).
-decToBin(X,Y):-
-	X>1,
-	M is X // 2,
-	decToBin(M,R),
-    
-	R is M mod 2,
-	write(R).
+%decToBin(0,0).
+%decToBin(1,1).
+%decToBin(X,Y):-
+%	X>1,
+%	M is X // 2,
+%	decToBin(M,R),   
+%	R is M mod 2,
+%	write(R).
 
 dToBin(0,0).
 dToBin(1,1).
@@ -78,4 +76,23 @@ dec2bin(N,L):-
     Y is N // 2,  
     dec2bin(Y,L1),
     L = [L1|X].
+
+%4.3
+%estrada(Origem,Destino,Km)
+estrada(a,b,25).
+estrada(a,d,23).
+estrada(b,c,19).
+estrada(b,e,32).
+estrada(c,d,14).
+estrada(c,f,28).
+estrada(d,f,30).
+estrada(e,f,26).
+
+
+acima(X,Y,D):- estrada(X,Y,D).
+%acima(X,Y,D):- estrada(X,Z,D), (acima(Z,Y,D);acima(Z,Y,_)), estrada(Z,Y,D1), Q is D + D1, write(Q).
+acima(X,Y,D):- estrada(X,Z,D), acima(Z,Y,_).
+
+dist(A,B,D):- acima(A,Z,D1), acima(Z,B,D2), D is D1 + D2; acima(A,B,D).
+
 
