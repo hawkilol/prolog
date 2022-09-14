@@ -16,7 +16,7 @@ ultimo(L,[X]).
 
 %ultimo(L,[X|Y]):- ultimo(Y, U).
 
-ultimo(L,[X|Y]):- ultimo(Y, U), exibe(X).
+ultimo(L,[X|Y]):- ultimo(Y,U), ultimo(U,[_|U]), write(L).
 
 exibe1([]):- nl.
 exibe1([X|Y]):- write(X), exibe1(Y), exibe1([X|Y]).
@@ -25,5 +25,6 @@ tam([],0).
 tam([X|Y],T):- tam(Y,T1), T is 1+T1.
 
 min([X],X).
-min([X|Y],X):- min(Y,M), X > M.
-min([X|Y],M):- min(Y,M), X < M.
+min([X|Y],X):- min(Y,M), X <= M.
+min([X|Y],M):- min(Y,M), X > M.
+
