@@ -11,6 +11,10 @@ membro(X,[_|Y]):- membro(X,Y).
 anexa([],B,B).
 anexa([X|A],B, [X|C]):- anexa(A,B,C).
 
+%aux
+append([], B, B).
+append([X|A], B, [X|C]):- anexa(A, [B], C).
+
 %5.1
 ultimo(L,[X]).
 
