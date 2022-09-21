@@ -50,11 +50,12 @@ anexa([X|A], B, [X|C]):- anexa(A, B, C).
 %append([X|A], B, [X|C]):- anexa(A, [B], C).
 
 %5.6
-%inv
 inv([],[]).
-inv([X],[X]).
+%inv([X],[X]).
 inv([X|Y], YX):- inv(Y,Y1), anexa(Y1,[X],YX).
 %sim
+sim([]).
+sim([X|Y]):- inv([X|Y],XI), [X|Y] == XI.
 
 
 %5.7
