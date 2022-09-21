@@ -63,3 +63,4 @@ d(2,dois).
 txt([X|Y], [Xt|Yb]):- d(X, Xt), txt(Y,Yb).
 txt([],[]).
 
+%v2
