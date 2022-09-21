@@ -84,6 +84,11 @@ rota(A,B,[A,B]):- estrada(A,B,_).
 rota(A,B,R):- estrada(A, C,_), rota(C,B,R1), R = [A|R1].
 %5.9
 %retangulo(A,B,C,D).
+vertical(linha(ponto(X,_), ponto(X,_))).
+horizontal(linha(ponto(_,Y), ponto(_,Y))).
+retangulo(A,B,C,D):- vertical(linha(A,B)), horizontal(linha(A,C));horizontal(linha(A,D)).
+%retangulo(ponto(1,1), ponto(1,2), ponto(2,2), ponto(2,1)).
+
 %regular(R).
 %quadrado(R).
 
