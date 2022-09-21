@@ -50,33 +50,34 @@ pro2(X,Y,Z):-
 	Z is X+R,
 	write(Z).
 %4.2
-%incompleto
-%decToBin(0,0).
-%decToBin(1,1).
-%decToBin(X,Y):-
-%	X>1,
-%	M is X // 2,
-%	decToBin(M,R),   
-%	R is M mod 2,
-%	write(R).
 
-dToBin(0,0).
-dToBin(1,1).
-dToBin(N,F):-
-	N>1,
-    M is N // 2,
-	dToBin(M,R),
-	F is R mod 2,
-    write(F).
+dec2Bin(D,B): - D2 is D+D, decToBin(D2,B).
+decTobBin(0,0).
+decToBin(1,1).
+decToBin(D,B):-
+	D>1,
+	M is D // 2,
+	decToBin(M,_),
+	B is M mod 2,
+	write(B).
+	
+%dToBin(0,0).
+%dToBin(1,1).
+%dToBin(N,F):-
+%	N>1,
+%   M is N // 2,
+%	dToBin(M,R),
+%	F is R mod 2,
+%    write(F).
 
-dec2bin([0],0).
-dec2bin([1],1).
-dec2bin(N,L):- 
-    N > 1,
-    X is N mod 2,
-    Y is N // 2,  
-    dec2bin(Y,L1),
-    L = [L1|X].
+%dec2bin([0],0).
+%dec2bin([1],1).
+%dec2bin(N,L):- 
+%    N > 1,
+%    X is N mod 2,
+%    Y is N // 2,  
+%    dec2bin(Y,L1),
+%    L = [L1|X].
 
 %4.3
 %estrada(Origem,Destino,Km)
@@ -94,4 +95,7 @@ acima(X,Y,D):- estrada(X,Y,D).
 %acima(X,Y,D):- estrada(X,Z,D), (acima(Z,Y,D);acima(Z,Y,_)), estrada(Z,Y,D1), Q is D + D1, write(Q).
 acima(X,Y,D):- estrada(X,Z,D), acima(Z,Y,_).
 
-dist(A,B,D):- acima(A,Z,D1), acima(Z,B,D2), D is D1 + D2,!; acima(A,B,D).
+dist(A,B,D):- 
+    acima(A,Z,D1), estrada(A,Z,D1),
+    acima(Z,B,D2), estrada(Z,B,D2),
+    D is D1 + D2,!; acima(A,B,D).
