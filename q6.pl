@@ -46,13 +46,15 @@ max([X|Y],M):- min(Y,M), X < M, !.
 anexa([], B, B).
 anexa([X|A], B, [X|C]):- anexa(A, B, C).
 
+
 %append([], B, B).
 %append([X|A], B, [X|C]):- anexa(A, [B], C).
 
-%5.6
 inv([],[]).
 %inv([X],[X]).
 inv([X|Y], YX):- inv(Y,Y1), anexa(Y1,[X],YX).
+
+%5.6
 %sim
 sim([]).
 sim([X|Y]):- inv([X|Y],XI), [X|Y] == XI.
