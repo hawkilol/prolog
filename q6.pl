@@ -88,7 +88,8 @@ rota(A,B,R):- estrada(A, C,_), rota(C,B,R1), R = [A|R1].
 dist(ponto(X1,Y1), ponto(X2,Y2), D):- D is (X1-Y1)*(X1-Y1)+(X2 - Y2)*(X2 - Y2).
 vertical(linha(ponto(X,_), ponto(X,_))).
 horizontal(linha(ponto(_,Y), ponto(_,Y))).
-retangulo(A,B,C,D):- vertical(linha(A,B)), horizontal(linha(A,C));horizontal(linha(A,D)).
+%retangulo(A,B,C,D):- vertical(linha(A,B)), horizontal(linha(A,C));horizontal(linha(A,D)).
+retangulo(A,B,C,D).
 %retangulo(ponto(1,1), ponto(1,2), ponto(2,2), ponto(2,1)).
 
 regular(retangulo(A,B,C,D)):- vertical(linha(A,B)), horizontal(linha(A,C)); horizontal(linha(A,D)).
