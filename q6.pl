@@ -6,6 +6,11 @@ exibe([X|Y]):- write(X), exibe(Y).
 %membro(X,L)
 membro(X,[X|_]).
 membro(X,[_|Y]):- membro(X,Y).
+%5.3
+%anexa(A,B,C):
+anexa([], B, B).
+anexa([X|A], B, [X|C]):- anexa(A, B, C),!.
+
 
 %Exe 5.3
 %5.1
@@ -38,8 +43,8 @@ max([X|Y],M):- min(Y,M), X < M, !.
 
 %5.5
 %anexa(A,B,C):
-anexa([], B, B).
-anexa([X|A], B, [X|C]):- anexa(A, B, C),!.
+%anexa([], B, B).
+%anexa([X|A], B, [X|C]):- anexa(A, B, C),!.
 
 
 %append([], B, B).
