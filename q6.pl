@@ -6,18 +6,13 @@ exibe([X|Y]):- write(X), exibe(Y).
 %membro(X,L)
 membro(X,[X|_]).
 membro(X,[_|Y]):- membro(X,Y).
-%5.3
-%anexa(A,B,C)
-anexa([],B,B).
-anexa([X|A],B, [X|C]):- anexa(A,B,C).
-
 
 %Exe 5.3
 %5.1
 %ultimo(L,U)
 ultimo([L],L).
 
-ultimo([_|U],L):- ultimo(U, L).
+ultimo([_|U],L):- ultimo(U, L),!.
 
 %5.2
 %tam(L,N)
@@ -34,8 +29,8 @@ soma([X|Y],S):- soma(Y,S1), S is S1 + X.
 %5.4
 %min
 min([X],X).
-min([X|Y],X):- min(Y,M), X =< M.
-min([X|Y],M):- min(Y,M), X > M.
+min([X|Y],X):- min(Y,M), X =< M,!.
+min([X|Y],M):- min(Y,M), X > M,!.
 %max
 max([X],X).
 max([X|Y],X):- min(Y,M), X >= M,!.
@@ -44,7 +39,7 @@ max([X|Y],M):- min(Y,M), X < M, !.
 %5.5
 %anexa(A,B,C):
 anexa([], B, B).
-anexa([X|A], B, [X|C]):- anexa(A, B, C).
+anexa([X|A], B, [X|C]):- anexa(A, B, C),!.
 
 
 %append([], B, B).
@@ -64,6 +59,14 @@ sim([X|Y]):- inv([X|Y],XI), [X|Y] == XI.
 d(0,zero).
 d(1,um).
 d(2,dois).
+d(3,tres).
+d(4,quatro).
+d(5,cinco).
+d(6,seis).
+d(7,sete).
+d(8,oito).
+d(9,nove).
+
 
 txt([X|Y], [Xt|Yb]):- d(X, Xt), txt(Y,Yb).
 txt([],[]).
@@ -79,8 +82,6 @@ estrada(b,e,5).
 estrada(c,f,6).
 estrada(d,f,7).
 estrada(e,f,8).
-%anexa([], B, B).
-%anexa([X|A], B, [X|C]):- anexa(A, B, C).
 
 %rota(A,B,R)
 rota(A,B,[A,B]):- estrada(A,B,_).
@@ -99,6 +100,4 @@ regular(retangulo(A,B,C,D)):- vertical(linha(A,B)), horizontal(linha(A,C)); hori
 quadrado(retangulo(A,B,C,D)):-regular(retangulo(A,B,C,D)),
     dist(A,B,AB), dist(C,D,CD), AB =:= CD,
     dist(A,D,AD), dist(B,C,BC), AD =:= BC.
-
-
 
