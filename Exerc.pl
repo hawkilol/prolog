@@ -9,3 +9,6 @@ pega3(E,[_,_,E|J]).
 %exec2
 sum([],0).
 sum([X|Xs],X+S):- sum(Xs,S).
+sumAcc(L,S):- sum3(L,_,S). %?
+sum3([],Acc,Res):- Res = Acc.
+sum3([X|X]).
