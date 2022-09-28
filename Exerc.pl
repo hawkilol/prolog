@@ -12,3 +12,6 @@ sum([X|Xs],X+S):- sum(Xs,S).
 sumAcc(L,S):- sum3(L,_,S). %?
 sum3([],Acc,Res):- Res = Acc.
 sum3([X|X]).
+
+append1([],Bs,Bs).
+append1([A|As],Bs,[A|AsBs]):- append(As,Bs,AsBs).
