@@ -16,8 +16,37 @@ sum3([X|X]).
 append1([],Bs,Bs).
 append1([A|As],Bs,[A|AsBs]):- append(As,Bs,AsBs).
 
+%%%
 %exerc3
+
 membro(X,L):- append(_,[X|_],L).
+%1
+CompAcc(L,C):- comp3(L,O,C).
+comp3([X|X1],Acc,C):- comp3(X1,Acc+1,C).
+comp3([],Acc,C):- C = Acc.
+%2
+sum([],_).
+sum([X|X1],S+X):- sum(X,S).
+
+sumAcc(L,S):- sum3(L,O,S).
+sum3([X|X1],Acc,S):- sum3(X1, Acc+X, S).
+sum3([], Acc, S):- S = Acc.
+
+%3
+membro(X,[X|_]).
+membro(X,[_|X1]):- membro(X,X1).
+
+%4
+append([],B1,B2).
+appned([A|A1],B1,[A|A1B1]):- append(A1,B1,A2B2).
+
+%5
+membro2(X,L):- append(_,[X|_],L).
+
+%6 
+prefix(P,L):- append(P,_,L).
+sufix(S,L):- append(_,S,L).
+sublist(S,L):- prefix(P,L), sufix(S,P).
 
 
 
