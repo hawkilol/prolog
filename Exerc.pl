@@ -96,8 +96,12 @@ ultimo(L,U):-append(_,[U],L).
 remU([U],[]):-!.
 remU([X|Xs],[X|Zs]):- remU(Xs,Zs).
 
-%15contigus(L):- append(_,[X,X|_],L).
-
+%15
+contigus1(L):- append(_,[X,X|_],L).
+%
+contigus2([X,X|_]).
+%contigus2(L):- L = [X|Xs], contigus2()...
+%16
 
 
 
