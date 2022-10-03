@@ -89,9 +89,14 @@ sublist(S,L):- prefix(P,L), sufix(S,P).
 ultimo1([U],U):-!.
 ultimo1([_|Xs],U):- ultimo(Xs,U).
 
+%8 append
+ultimo(L,U):-append(_,[U],L).
+
 %9
 remU([U],[]):-!.
 remU([X|Xs],[X|Zs]):- remU(Xs,Zs).
+
+%15contigus(L):- append(_,[X,X|_],L).
 
 
 
