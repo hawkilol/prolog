@@ -44,3 +44,6 @@ permutation(Xs,[Z|Zs]):- select(Z,Xs,Ys), permutation(Ys,Zs).
 permutaion([],[]).
 
 %24
+reverse2(L,R):- reverse2(L,[],R).
+reverse2([],R,R).
+reverse2([X|Xs], ACC,R):- reverse2(Xs,[X|ACC],R).
