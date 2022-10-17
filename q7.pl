@@ -15,11 +15,14 @@ trocaPU(Lpu,Lup):- append([P|M],[U],Lpu), append([U|M],[P], Lup).
 
 remDupl([X|Xs],Xd):- member(X,Xs), remDupl(Xs,Xd).
 remDupl([X|Xs],[X|Xd]):- remDupl(Xs,Xd).
-
+remDupl([],[]).
 remDupl1([X|Xs], Xd):- member(X,Xs), select(X,Xs,Xd),
     remDupl1(Xs,Xd).
 
 remDupl1([X|Xs], [X|Xd]):- remDupl1(Xs, Xd).
+remDupl1([],[]).
 
 remove1(X,[X|Xs], Xr):- remove1(X, Xs, Xr).
-remove1(X,[Y|Xs], [Y|Xr]):- X=\=Y, remove1(X,Xs,Xr).
+
+remove1(_,[],[]).
+remove1(X,[Y|Xs], [Y|Xr]):- X\=Y, remove1(X,Xs,Xr).
