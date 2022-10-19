@@ -88,8 +88,8 @@ maxL([X|Xs],X):MaxL(Xs,M), X>M.
 maxL([X|Xs],M):MaxL(Xs,M), X=<M.
 %34
 maxLacc([X|Xs],M):- maxL3(Xs,X,M).
-maxL3([],ACC,M):- X>=ACC, maxL3()
-maxL3([X|Xs],ACC,M):- X<= ACC, maxL3().
+maxL3([],ACC,M):- X>=ACC, maxL3(Xs,X,M)
+maxL3([X|Xs],ACC,M):- X<= ACC, maxL3(Xs,ACC,M).
 
 %35
 sort1(L,S):- permutaion(L,S), isOrdered(S).
@@ -97,4 +97,4 @@ sort1(L,S):- permutaion(L,S), isOrdered(S).
 %36
 insOrd(X,[],[X]).
 insOrd(X,[Y|Ys],[X,Y|Ys]):- X<=Y.
-insOrd(X,[Y|Ys],[Y|XYs]):- X>Y, insOrd(X,Ys,XYs).
+insOrd(X,[Y|Ys],[Y|XYs]):- X=Y, insOrd(X,Ys,XYs).
