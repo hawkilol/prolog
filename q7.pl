@@ -47,3 +47,8 @@ permutaion([],[]).
 reverse2(L,R):- reverse2(L,[],R).
 reverse2([],R,R).
 reverse2([X|Xs], ACC,R):- reverse2(Xs,[X|ACC],R).
+
+%25
+%rev([a,b,c],R), R = [c,b,a].
+rev([],[]).
+rev([X|Xs],R):-rev(Xs,Xr), append(Xr,[X],R).
