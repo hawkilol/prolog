@@ -97,4 +97,4 @@ sort1(L,S):- permutaion(L,S), isOrdered(S).
 %36
 insOrd(X,[],[X]).
 insOrd(X,[Y|Ys],[X,Y|Ys]):- X<=Y.
-insOrd(X,[Y|Ys],[Y|XYs]):- X=Y, insOrd(X,Ys,XYs).
+insOrd(X,[Y|Ys],[Y|XYs]):- X>Y, insOrd(X,Ys,XYs).
