@@ -28,7 +28,6 @@ remove1(X,[X|Xs], Xr):- remove1(X, Xs, Xr).
 remove1(_,[],[]).
 remove1(X,[Y|Xs], [Y|Xr]):- X\=Y, remove1(X,Xs,Xr).
 
-
 %21
 flatten1([],[]).
 flatten1(X,[X]):- X\=[], X\=[_|_].
@@ -52,3 +51,27 @@ reverse2([X|Xs], ACC,R):- reverse2(Xs,[X|ACC],R).
 %rev([a,b,c],R), R = [c,b,a].
 rev([],[]).
 rev([X|Xs],R):-rev(Xs,Xr), append(Xr,[X],R).
+
+%26
+%palindrome recursivo
+palindrome(L):- append([P|M], [U], L), P=U, palindrome(M).
+%palindrome([]).
+%palindrome([_]). palindrome([]).
+%
+%27
+palindrome1(X):- rev)(X,Xr), X == Xr.
+%28
+%
+%29
+subConjunto([X|Xs],Y):- select((X,Y,Ys), subConjunto(Xs,Ys)).
+subConjunto([],Y).
+%30
+intersecao([],X,[]).
+intersecao([X|Xs],Y,[X|Is]):- member(X,Y),intersecao(Xs,Y,Is).
+
+intersecao([X|Xs],Y,Is):- \+ member(X,Y), intersecao(Xs,Y,Is).
+%31
+uniao([X|Xs],Y,[X|Us]):- \+ member(X,Y), uniao(Xs,Y,Us).
+uniao([X|Xs],Y,Us):- member(X,Y), uniao(Xs,Y,Us).
+uniao([],Y,Y).
+%32
