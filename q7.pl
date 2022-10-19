@@ -59,19 +59,42 @@ palindrome(L):- append([P|M], [U], L), P=U, palindrome(M).
 %palindrome([_]). palindrome([]).
 %
 %27
-palindrome1(X):- rev(X,Xr), X == Xr.
+palindrome1(X):- rev(X,Xr), X = Xr.
 %28
 %
+
 %29
 subConjunto([X|Xs],Y):- select((X,Y,Ys), subConjunto(Xs,Ys)).
 subConjunto([],Y).
+
 %30
 intersecao([],X,[]).
 intersecao([X|Xs],Y,[X|Is]):- member(X,Y),intersecao(Xs,Y,Is).
-
 intersecao([X|Xs],Y,Is):- \+ member(X,Y), intersecao(Xs,Y,Is).
+
 %31
 uniao([X|Xs],Y,[X|Us]):- \+ member(X,Y), uniao(Xs,Y,Us).
 uniao([X|Xs],Y,Us):- member(X,Y), uniao(Xs,Y,Us).
 uniao([],Y,Y).
+
 %32
+isOrdered([]).
+isOrdered([_]).
+isOrdered([X,Y|XYs]):- X=<Y, isOrdered([Y|XYs]).
+
+%33
+maxL([X],X):-!.
+maxL([X|Xs],X):MaxL(Xs,M), X>M.
+maxL([X|Xs],M):MaxL(Xs,M), X=<M.
+%34
+maxLacc([X|Xs],M):- maxL3(Xs,X,M).
+maxL3([],ACC,M):- X>=ACC, maxL3()
+maxL3([X|Xs],ACC,M):- X<= ACC, maxL3().
+
+%35
+sort1(L,S):- permutaion(L,S), isOrdered(S).
+
+%36
+insOrd(X,[],[X]).
+insOrd(X,[Y|Ys],[X,Y|Ys]):- X<=Y.
+insOrd(X,[Y|Ys],[Y|XYs]):- X=Y, insOrd(X,Ys,XYs).
