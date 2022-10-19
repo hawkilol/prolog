@@ -59,7 +59,7 @@ palindrome(L):- append([P|M], [U], L), P=U, palindrome(M).
 %palindrome([_]). palindrome([]).
 %
 %27
-palindrome1(X):- rev)(X,Xr), X == Xr.
+palindrome1(X):- rev(X,Xr), X == Xr.
 %28
 %
 %29
