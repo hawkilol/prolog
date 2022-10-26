@@ -61,11 +61,13 @@ palindrome(L):- append([P|M], [U], L), P=U, palindrome(M).
 %27
 palindrome1(X):- rev(X,Xr), X = Xr.
 %28
-%
+metIguais([]).
+metIguais(L):- append(M,M,L).
 
 %29
 subConjunto([X|Xs],Y):- select(X,Y,Ys), subConjunto(Xs,Ys).
 subConjunto([],Y).
+
 
 %30
 intersecao([],X,[]).
@@ -125,5 +127,5 @@ merge1(Xs,[],Xs):-!.
 mergeSort([],[]):-!.
 mergeSort([X],[X]):-!.
 mergeSort(L,S):-particiona(L,X,Y),mergeSort(X,Xo),mergeSort(Y,Yo),merge1(Xo,Yo,S). 
-
+%42
 
