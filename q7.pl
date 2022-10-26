@@ -40,7 +40,7 @@ zipper([],[],[]).
 
 %23
 permutation(Xs,[Z|Zs]):- select(Z,Xs,Ys), permutation(Ys,Zs).
-permutaion([],[]).
+permutation([],[]).
 
 %24
 reverse2(L,R):- reverse2(L,[],R).
@@ -92,9 +92,13 @@ maxL3([],ACC,M):- X>=ACC, maxL3(Xs,X,M)
 maxL3([X|Xs],ACC,M):- X<= ACC, maxL3(Xs,ACC,M).
 
 %35
-sort1(L,S):- permutaion(L,S), isOrdered(S).
+sortx(L,S):- permutation(L,S), isOrdered(S).
 
 %36
 insOrd(X,[],[X]).
-insOrd(X,[Y|Ys],[X,Y|Ys]):- X<=Y.
-insOrd(X,[Y|Ys],[Y|XYs]):- X=Y, insOrd(X,Ys,XYs).
+insOrd(X,[Y|Ys],[X,Y|Ys]):- X<Y.
+insOrd(X,[Y|Ys],[Y|XYs]):- X>=Y, insOrd(X,Ys,XYs).
+
+%
+gL(L,N):- !,findall(X,(between(1,N,I), X is random(1000)),L).
+
