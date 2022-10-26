@@ -74,7 +74,7 @@ intersecao([],X,[]).
 intersecao([X|Xs],Y,[X|Is]):- member(X,Y),intersecao(Xs,Y,Is).
 intersecao([X|Xs],Y,Is):- \+ member(X,Y), intersecao(Xs,Y,Is).
 
-%31 bad
+%31
 uniao([X|Xs],Y,[X|Us]):- \+ member(X,Y), uniao(Xs,Y,Us).
 uniao([X|Xs],Y,Us):- member(X,Y), uniao(Xs,Y,Us).
 uniao([],Y,Y).
@@ -109,6 +109,7 @@ insOrd(X,[Y|Ys],[Y|XYs]):- X>=Y, insOrd(X,Ys,XYs).
 
 %
 gL(L,N):- !,findall(X,(between(1,N,I), X is random(1000)),L).
+gL1(N,L,Lo):- length(Lo,N), append(_, Lo,L).
 
 %38
 insDir([X|Xs],Lo):- insDir3(Xs,[X],Lo).
