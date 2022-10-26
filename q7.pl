@@ -124,6 +124,6 @@ merge1(Xs,[],Xs):-!.
 %41
 mergeSort([],[]):-!.
 mergeSort([X],[X]):-!.
-mergeSort(L,S):-particiona(L,X,Y),mergesort(X,Xo),mergeSort(Y,Yo),merge1(Xo,Yo,S). 
+mergeSort(L,S):-particiona(L,X,Y),mergeSort(X,Xo),mergeSort(Y,Yo),merge1(Xo,Yo,S). 
 
 
