@@ -64,7 +64,7 @@ palindrome1(X):- rev(X,Xr), X = Xr.
 %
 
 %29
-subConjunto([X|Xs],Y):- select((X,Y,Ys), subConjunto(Xs,Ys)).
+subConjunto([X|Xs],Y):- select(X,Y,Ys), subConjunto(Xs,Ys).
 subConjunto([],Y).
 
 %30
@@ -72,7 +72,7 @@ intersecao([],X,[]).
 intersecao([X|Xs],Y,[X|Is]):- member(X,Y),intersecao(Xs,Y,Is).
 intersecao([X|Xs],Y,Is):- \+ member(X,Y), intersecao(Xs,Y,Is).
 
-%31
+%31 bad
 uniao([X|Xs],Y,[X|Us]):- \+ member(X,Y), uniao(Xs,Y,Us).
 uniao([X|Xs],Y,Us):- member(X,Y), uniao(Xs,Y,Us).
 uniao([],Y,Y).
@@ -84,12 +84,18 @@ isOrdered([X,Y|XYs]):- X=<Y, isOrdered([Y|XYs]).
 
 %33
 maxL([X],X):-!.
-maxL([X|Xs],X):MaxL(Xs,M), X>M.
-maxL([X|Xs],M):MaxL(Xs,M), X=<M.
+maxL([X|Xs],X):-maxL(Xs,M), X>M.
+maxL([X|Xs],M):-maxL(Xs,M), X=<M.
+%33.1
+maxL2([X],X):-!.
+maxL2([X|Xs],R):- maxL2(Xs,M),(X>M, R=X, !; X=<M, R=M).
+
+maxL2([X|Xs],M):- maxL2(Xs,M), X=<M.
 %34
 maxLacc([X|Xs],M):- maxL3(Xs,X,M).
-maxL3([],ACC,M):- X>=ACC, maxL3(Xs,X,M)
-maxL3([X|Xs],ACC,M):- X<= ACC, maxL3(Xs,ACC,M).
+maxL3([],ACC,M):- M=ACC.
+maxL3([X|Xs],ACC,M):- X>=ACC, maxL3(Xs,X,M).
+maxL3([X|Xs],ACC,M):- X< ACC, maxL3(Xs,ACC,M).
 
 %35
 sortx(L,S):- permutation(L,S), isOrdered(S).
@@ -101,4 +107,23 @@ insOrd(X,[Y|Ys],[Y|XYs]):- X>=Y, insOrd(X,Ys,XYs).
 
 %
 gL(L,N):- !,findall(X,(between(1,N,I), X is random(1000)),L).
+
+%38
+insDir([X|Xs],Lo):- insDir3(Xs,[X],Lo).
+insDir3([X|Xs],ACC,Lo):- insOrd(X,ACC,ACCx), insDir3(Xs,ACCx,Lo).
+insDir3([],ACC, Lo):- Lo=ACC.
+%39
+particiona([X,Y|XYs],[X|Xs],[Y|Ys]):-particiona(XYs,Xs,Ys).
+particiona([X],[X],[]).
+particiona([],[],[]). 
+%40
+merge1([X|Xs],[Y|Ys],[X|XYs]):-X@<Y,!,merge1(Xs, [Y|Ys],XYs).
+merge1([X|Xs],[Y|Ys],[Y|XYs]):-X@>=Y,!,merge1([X|Xs], Ys,XYs).
+merge1([],Ys,Ys):-!.
+merge1(Xs,[],Xs):-!.
+%41
+mergeSort([],[]):-!.
+mergeSort([X],[X]):-!.
+mergeSort(L,S):-particiona(L,X,Y),mergesort(X,Xo),mergeSort(Y,Yo),merge1(Xo,Yo,S). 
+
 
