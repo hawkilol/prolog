@@ -129,4 +129,10 @@ mergeSort([],[]):-!.
 mergeSort([X],[X]):-!.
 mergeSort(L,S):-particiona(L,X,Y),mergeSort(X,Xo),mergeSort(Y,Yo),merge1(Xo,Yo,S). 
 %42
+%time test: gL(L,100),time(mergeSort(L,S)),length(L,Len).
+enezimo(N,[X|Xs],X):-N=<1.
+enezimo(N,[X|Xs],Y):-N>1, N1 is N-1, enezimo(N1,Xs,Y).
+%gL(L,100),time(enezimo(98,[L],X)),length(L,Len).
+
+
 
