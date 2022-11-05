@@ -1,5 +1,3 @@
-%ponto(X,Y).
-%errado-> dist1(ponto(X1,Y1), ponto(X2,Y2), D):- D is (X1-Y1)*(X1-Y1)+(X2-Y2)*(X2-Y2).
 %quase igual
 qigual(X,Y):- XYerro is abs(X-Y), XYerro<0.0001.
 
@@ -110,3 +108,51 @@ det2([A1,A2],[B1,B2],[C1,C2], Det):-
 %Area triangulo é /2 da area do retangulo.
 areaTri([X1,X2],[Y1,Y2],[Z1,Z2],A):- det2([X1,X2],[Y1,Y2],[Z1,Z2],Det), A is abs(Det/2).
 %X=[0,0], Y=[0,2], Z= [2,0] ,areaTri(X,Y,Z,A).
+
+
+
+
+%%para comparação
+
+================================/================================
+
+% tri.pl 
+% Digitar X:10. <enter>  
+ler(X,Y,Z):- write('X:'),read(X),nl,
+             write('Y:'),read(Y),nl,
+	         write('Z:'),read(Z),nl.
+p:-ler(X,Y,Z), 
+   write('valores lidos:'),
+   write((X,Y,Z)),nl. 
+
+
+%% area de um triangulo por tres pontos 
+%% usando algebra linear 
+%% [P1,P2,P3]= [[a,b],[c,d],[e,f]]
+%% [[a,b],[c,d],[e,f]]=abs((a*d-b*c+(c*f-d*e)+(e*b-f*a))/2)
+
+calcArea3([A,B,C],Res):-
+    mult(A,B,R1),mult(B,C,R2),mult(C,A,R3),
+    Res=abs((R1+R2+R3)/2).
+mult(A,B,R):- A=[Xa,Ya], B=[Xb,Yb],R=Xa*Yb-Ya*Xb.
+p:- L = [[1, 2], [3, 4], [5, 6]],
+        calcArea3(L,R), write(L:R),nl,
+        XX is R, write(XX).
+	
+p2:- L = [[a,b], [c,d], [e,f]],
+calcArea3(L,R), write(L=R).
+/*
+|    p.
+[[1,2],[3,4],[5,6]]:1*4-2*3+(3*6-4*5)+(5*2-6*1)
+0
+true
+*/
+
+/*
+" vértices A (4 , 0), B (0 , 0) e C (0 , 6) é 12.
+ A (1, 3), B (2, 5) e C (-2,4) eh 7/2
+ "A (0, 0), B (0, -8) e C (-5, 0) eh 20
+ 
+ % ?- calcArea3([[0,0],[0,-8],[-5,0]],A), A1 is A. 
+ % ?- calcArea3([[1,3],[2,5],[-2,4]],A), A1 is A.
+*/
