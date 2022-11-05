@@ -94,7 +94,8 @@ rota(A,B,R):- estrada(A, C,_), rota(C,B,R1), R = [A|R1].
 %5.9
 %retangulo(A,B,C,D).
 dist(ponto(X1,Y1), ponto(X2,Y2), D):- D is (X1-Y1)*(X1-Y1)+(X2 - Y2)*(X2 - Y2).
-%dist(ponto(X1,Y1), ponto(X2,Y2), D):- D is (X1-X2)*(X1-X2)+(Y1-Y2)*(Y1-Y2).
+
+%dist(ponto(X1,Y1), ponto(X2,Y2), D):- D is sqrt((X1-X2)*(X1-X2)+(Y1-Y2)*(Y1-Y2)).
 
 vertical(linha(ponto(X,_), ponto(X,_))).
 horizontal(linha(ponto(_,Y), ponto(_,Y))).
