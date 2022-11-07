@@ -19,22 +19,21 @@ eh_isoceles(ponto(X1,Y1),ponto(X2,Y2),ponto(X3,Y3)):-
     eh_triangulo(ponto(X1,Y1),ponto(X2,Y2),ponto(X3,Y3)),
     dist(ponto(X1,Y1),ponto(X2,Y2),X), dist(ponto(X2,Y2),ponto(X3,Y3),Y),
     dist(ponto(X3,Y3),ponto(X1,Y1),Z),
-    X==Y; Y==Z; Z==X.
+    X=:=Y; Y=:=Z; Z=:=X.
 
 %eh_equilatero(X,Y,Z):- X=Y=Z.
 eh_equilatero(ponto(X1,Y1),ponto(X2,Y2),ponto(X3,Y3)):-
     eh_triangulo(ponto(X1,Y1),ponto(X2,Y2),ponto(X3,Y3)),
     dist(ponto(X1,Y1),ponto(X2,Y2),X), dist(ponto(X2,Y2),ponto(X3,Y3),Y),
     dist(ponto(X3,Y3),ponto(X1,Y1),Z),
-    X=:=Y, Y=:=Z.
+    X==Y, Y==Z.
 
 eh_quase_equilatero(ponto(X1,Y1),ponto(X2,Y2),ponto(X3,Y3)):-
     eh_triangulo(ponto(X1,Y1),ponto(X2,Y2),ponto(X3,Y3)),
 
     dist(ponto(X1,Y1),ponto(X2,Y2),X), dist(ponto(X2,Y2),ponto(X3,Y3),Y),
-    dist(ponto(X3,Y3),ponto(X1,Y1),Z),
+    dist(ponto(X3,Y3),ponto(X1,Y1),Z),write((X,Y,Z)),
     qigual(X,Y), qigual(Y,Z).
-
 
 %eh_escaleno(X,Y,Z):- X<>Y, Y<>Z, X<>Z.
 eh_escaleno(ponto(X1,Y1),ponto(X2,Y2),ponto(X3,Y3)):-
@@ -54,7 +53,7 @@ eh_isoceles1(X,Y,Z):-
 
 eh_equilatero1(X,Y,Z):-
     eh_triangulo1(X,Y,Z),
-    X=:=Y, Y=:=Z.
+    X==Y, Y==Z.
 
 eh_escaleno1(X,Y,Z):-
     eh_triangulo1(X,Y,Z),
