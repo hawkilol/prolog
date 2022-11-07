@@ -19,7 +19,7 @@ eh_isoceles(ponto(X1,Y1),ponto(X2,Y2),ponto(X3,Y3)):-
     eh_triangulo(ponto(X1,Y1),ponto(X2,Y2),ponto(X3,Y3)),
     dist(ponto(X1,Y1),ponto(X2,Y2),X), dist(ponto(X2,Y2),ponto(X3,Y3),Y),
     dist(ponto(X3,Y3),ponto(X1,Y1),Z),
-    X==Y; y==Z; Z==X.
+    X==Y; Y==Z; Z==X.
 
 %eh_equilatero(X,Y,Z):- X=Y=Z.
 eh_equilatero(ponto(X1,Y1),ponto(X2,Y2),ponto(X3,Y3)):-
