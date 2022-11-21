@@ -130,5 +130,8 @@ def maxL(L):
   elif maxL(tail(L)) >  head(L): return maxL(tail(L))
   else: return head(L)
 
-  
+def reverse1(L):
+  if null(tail(L)): return head(L)
+  else: return revese(tail(L)) + reverse(head(L))
+
 
