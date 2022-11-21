@@ -126,8 +126,9 @@ def select(x,L):
   
 #test
 def maxL(L):
-  if compr(L) == 1: return L
-  if maxL(tail(L)) < head(L): return head(L)
+  if null(tail(L)): return head(L)
+  if maxL(tail(L)) >  head(L): return maxL(tail(L))
+  else: return head(L)
 
   
 
