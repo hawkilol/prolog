@@ -113,9 +113,7 @@ def sum(L):
 def append(la,lb):
   if null(la): return lb
   else: return lst(head(la), append(tail(la),lb))
-
-#maxL
-
+  
 def member(x,L):
   if null(L):return 0
   if(head(L)) == x: return 1
@@ -124,3 +122,11 @@ def member(x,L):
 def select(x,L):
   if(head(L) == x):return tail(L)
   else: return lst(head(L),select(x,tail(L)))
+#test
+def maxL(L):
+  if compr(L) == 1: return L
+  if(head(L)> tail(L)) return maxL(head(L))
+
+  else: return maxL(tail(L))
+  
+
