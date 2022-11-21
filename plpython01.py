@@ -122,11 +122,12 @@ def member(x,L):
 def select(x,L):
   if(head(L) == x):return tail(L)
   else: return lst(head(L),select(x,tail(L)))
+  
+  
 #test
 def maxL(L):
   if compr(L) == 1: return L
-  if(head(L)> tail(L)) return maxL(head(L))
+  if maxL(tail(L)) < head(L): return head(L)
 
-  else: return maxL(tail(L))
   
 
