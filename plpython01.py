@@ -133,6 +133,18 @@ def maxL(L):
 def reverse1(L):
   if null(L): return L
   else: return  reverse1(tail(L)) + [head(L)]
-  
 
+def rev(L): return revAcc(1, [])
+
+def revAcc(L, acc):
+  if null(L): return acc
+  else: return (rev(tail(L), [head(L), acc]))
+  
+def maxAcc(L):
+def maxAcc1(L, acc):
+ 
+def particiona(L):
+  if null(L): return [], []
+  else:
+  
 
