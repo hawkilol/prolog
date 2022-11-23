@@ -159,7 +159,9 @@ def merge(la, lb):
 	if null(lb): return la
 	if head(la)> head(lb): return lst(head(la), merge(tail(la), lb)
 	else: return 'a fzr'
-def mergeSort():
+					  
+					  
+def mergeSort(L):
 	if null(L): return []
 	if null(tail(L)): return 'XXX'
 	a,b = particiona(L): return merge(mergeSort(a), mergeSort(b))
