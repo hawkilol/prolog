@@ -157,8 +157,8 @@ def particiona():
 def merge(la, lb):
 	if null(la): return lb
 	if null(lb): return la
-	if head(la)> head(lb): return lst(head(la), merge(tail(la), lb)
-	else: return 'a fzr'
+	if head(la)< head(lb): return lst(head(la), merge(tail(la), lb)
+	else: return [head(lb), merge(tail(la), lb)]
 					  
 					  
 def mergeSort(L):
