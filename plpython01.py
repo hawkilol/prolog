@@ -147,7 +147,7 @@ def maxAcc1(L, acc):
   if head(l)>acc: return maxAcc1(tail(L), head(L))
   else: return maxAcc1(tail(L), acc)
  
-def particiona():
+def particiona(L):
 	if null(L): return [], []
 	elif null(tail(L)):return L, []
 	else:
@@ -166,6 +166,20 @@ def mergeSort(L):
 	if null(tail(L)): return L
 	a,b = particiona(L): return merge(mergeSort(a), mergeSort(b))
 	
-
-
+def dupl(L):
+	if member(head(L), tail(L)): return true
+	else: return dupl(tail(L))
+					  
+def remDupl(L):
+	if member(head(L), tail(L)): return true, remove(L, tail(L))
+	else: return dupl(tail(L))
+					 
+					  
+def remDupl(L):
+	if null(L): return []
+	if member(head(L), tail(L)): return remDupl(tail(L))
+	else return [head(L),(), tail(L)]
+					  
+					  
+			
 
